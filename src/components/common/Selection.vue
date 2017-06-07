@@ -1,6 +1,6 @@
 <template>
 		<div class="selection-component">
-      <div class="selection-show" @click="toggleList">
+      <div class="selection-show" @click.stop="toggleList">
       	<span>{{ selectedText }}</span>
          <div class="arrow"></div>
       </div>
@@ -39,6 +39,7 @@
 				this.$emit('on-change', this.selections[this.nowIndex])
 			},
 			toggleList () {
+				this.eventBus().$emit('reset-select')
 				this.isShow = !this.isShow
 			}
 		},
@@ -49,11 +50,14 @@
 			}
 		},
 		mounted () {
-		   document.addEventListener('click', (e) => {
+		   /*document.addEventListener('click', (e) => {
 		      if (!this.$el.contains(e.target)) {
 		      	this.isShow && (this.isShow = false)
 		      }
-		   })
+		   })*/
+		   this.eventBus().$on('reset-select', () => {		   	
+				this.isShow = false
+			})
 		}
 	}
 </script>

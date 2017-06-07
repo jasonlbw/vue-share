@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div @click="resetSelect">
 		<div class="header">
 			<el-row :gutter="20">
 				<el-col :span="4">
@@ -39,7 +39,7 @@
 			国美互联网科技有限公司
 		</div>
 		<my-dialog :is-show="isLogDialpgShow" @on-close="closeLogDialog('isLogDialpgShow')">
-			<el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+			<el-form label-position="right" label-width="80px">
 				<el-form-item label="用户名">
 					<el-input v-model="userName"></el-input>
 				</el-form-item>
@@ -80,6 +80,9 @@
 			login () {
 				this.isLogin = false
 				this.isLogDialpgShow = false
+			},
+			resetSelect () {
+				this.eventBus().$emit('reset-select')
 			}
 		},
 	 	components: {

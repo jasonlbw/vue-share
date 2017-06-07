@@ -9,6 +9,7 @@
 			<el-col :span="12">
 				<div class="grid-content bg-purple-light">
 					<selection :selections="types" @on-change="paramsChange('type', $event)"></selection>
+					<selection :selections="types" @on-change="paramsChange('type', $event)"></selection>
 				</div>
 			</el-col>
 		</el-row>

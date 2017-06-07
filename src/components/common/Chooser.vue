@@ -34,7 +34,7 @@
 	 		chosenIndex (index) {
 	 			this.nowIndex = index
 	 			//***禁止直接更改父组件传递进来的属性变量***
-	 			//this.selections = { label: 'test', value: 0 }
+	 			// this.selections = { label: 'test', value: 0 }
 	 			this.$emit('on-change', this.selections[index])
 	 		}
 	 	}

@@ -12,18 +12,31 @@ Vue.use(ElementUI)
 /*注册全局组件*/
 Vue.component('test', Test)
 /*全局混合使用*/
+let eventBus = new Vue()
 Vue.mixin({
 	methods: {
 		hello () {
 			console.log('hello from mixin')
-		}
-	}
+		},
+      eventBus () {
+         return eventBus
+      }
+	},
+  filters : {
+    capitalize (value) {
+      if(!value) {
+        return ''
+      }
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }
 })
 
 /* eslint-disable no-new */
 new Vue({
-	//挂载对象
-  	el: '#app',
+	 //挂载对象
+  	el: '#test',
   	//给当前实例注入路由插件
   	router,
   	//模板 => 替换挂载对象

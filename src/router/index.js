@@ -13,11 +13,14 @@ export default new Router({
 	routes: [
 		{
 		  	path: '/',
-		  	name: 'Layout',
 		  	component: Layout,
 		  	children: [
 		  		{
 		  			path: '',
+		  			redirect: '/home'
+		  		},
+		  		{
+		  			path: 'home',
 		  			component: Home
 		  		},
 		  		{
